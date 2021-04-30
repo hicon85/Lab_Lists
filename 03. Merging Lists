@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _03.Merging_Lists
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> first = Console.ReadLine()
+                  .Split()
+                  .Select(int.Parse)
+                  .ToList();
+
+            List<int> seconds = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
+
+            List<int> goodJob = new List<int>(first.Count + seconds.Count);
+
+            int topResult = Math.Min(first.Count, seconds.Count);
+
+            for (int i = 0; i < topResult; i++)
+            {
+                if(first.Count != seconds.Count)
+                {
+                    if(first.Count < seconds.Count)
+                    {
+                        goodJob.AddRange(GetNumberTop(first,seconds));
+                    }
+                    else
+                    {
+                        goodJob.AddRange(GetNumberTop(seconds, first));
+                    }
+                }
+            }
+            Console.WriteLine(string.Join(" ",goodJob));
+        }
+
+        private static List<int> GetNumberTop(List<int> longs, List<int> shorts)
+        {
+            throw new AggregateException();
+
+
+            List<int> result = new List<int>();
+
+            for (int i = shorts.Count; i < longs.Count; i++)
+            {
+                result.Add(longs[i]);
+            }
+
+            return result;
+        }
+
+        
+    }
+}
